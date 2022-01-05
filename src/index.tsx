@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { AppointmentsDayView } from "./Appointment";
-import { sampleAppointments } from "./sampleData";
-ReactDOM.render(<AppointmentsDayView appointments={sampleAppointments} />, document.getElementById("root"));
+import { CustomerForm } from "./CustomerForm";
+ReactDOM.render(
+  <CustomerForm firstName={undefined} lastName={undefined} phoneNumber={undefined} onSubmit={undefined} />,
+  document.getElementById("root")
+);
