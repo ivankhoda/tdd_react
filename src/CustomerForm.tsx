@@ -1,5 +1,5 @@
 import { default as React, useState } from "react";
-export const CustomerForm = ({ firstName, lastName, phoneNumber, onSubmit }) => {
+export const CustomerForm = ({ firstName, lastName, phoneNumber, onSave }) => {
   const [customer, setCustomer] = useState({ firstName, lastName, phoneNumber });
 
   const handleChange = ({ target }) => {
@@ -8,9 +8,21 @@ export const CustomerForm = ({ firstName, lastName, phoneNumber, onSubmit }) => 
       [target.name]: target.value,
     }));
   };
+  const handleSubmit = async () => {
+    const result = await window.fetch("/customers", {
+      method: "POST",
+      body: JSON.stringify(customer),
+      credentials: "same-origin",
+      headers: { "Content-Type": "application/json" },
+    });
+    if (result.ok) {
+      const customerWithId = await result.json();
+      onSave(customerWithId);
+    }
+  };
 
   return (
-    <form id="customer" onSubmit={() => onSubmit(customer)}>
+    <form id="customer" onSubmit={handleSubmit}>
       <label htmlFor="firstName">First name</label>
       <input type="text" name="firstName" id="firstName" value={firstName} onChange={handleChange} />{" "}
       <label htmlFor="lastName">Last name</label>
@@ -20,4 +32,7 @@ export const CustomerForm = ({ firstName, lastName, phoneNumber, onSubmit }) => 
       <input type="submit" value="Add" />
     </form>
   );
+};
+CustomerForm.defaultProps = {
+  onSave: () => {},
 };

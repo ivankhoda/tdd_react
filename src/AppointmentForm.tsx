@@ -24,6 +24,7 @@ export const AppointmentForm = ({
   );
   return (
     <form id="appointment">
+      <label htmlFor="service">Salon service</label>
       <select name="service" value={service} readOnly>
         <option />{" "}
         {selectableServices.map((s) => (
@@ -38,6 +39,7 @@ export const AppointmentForm = ({
         availableTimeSlots={availableTimeSlots}
         handleChange={handleStartsAtChange}
       />
+      <input type="submit" value="Add" />
     </form>
   );
 };

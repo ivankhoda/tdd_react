@@ -1,62 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1641497459769" clover="3.2.0">
-  <project timestamp="1641497459769" name="All files">
-    <metrics statements="42" coveredstatements="42" conditionals="2" coveredconditionals="2" methods="19" coveredmethods="19" elements="63" coveredelements="63" complexity="0" loc="42" ncloc="42" packages="2" files="3" classes="3"/>
+<coverage generated="1641550322609" clover="3.2.0">
+  <project timestamp="1641550322609" name="All files">
+    <metrics statements="15" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="7" coveredmethods="1" elements="24" coveredelements="6" complexity="0" loc="15" ncloc="15" packages="2" files="2" classes="2"/>
     <package name="src">
-      <metrics statements="38" coveredstatements="38" conditionals="2" coveredconditionals="2" methods="17" coveredmethods="17"/>
-      <file name="AppointmentForm.tsx" path="/Users/ivan/websites/tdd_react/src/AppointmentForm.tsx">
-        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="13" count="14" type="stmt"/>
-        <line num="17" count="14" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="25" count="14" type="stmt"/>
-        <line num="30" count="76" type="stmt"/>
-        <line num="44" count="1" type="stmt"/>
-      </file>
-      <file name="TimeSlotTable.tsx" path="/Users/ivan/websites/tdd_react/src/TimeSlotTable.tsx">
-        <metrics statements="31" coveredstatements="31" conditionals="2" coveredconditionals="2" methods="13" coveredmethods="13"/>
+      <metrics statements="11" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="0"/>
+      <file name="CustomerForm.tsx" path="/Users/ivan/websites/tdd_react/src/CustomerForm.tsx">
+        <metrics statements="11" coveredstatements="2" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="2" count="1" type="stmt"/>
-        <line num="3" count="14" type="stmt"/>
-        <line num="4" count="14" type="stmt"/>
-        <line num="5" count="14" type="stmt"/>
-        <line num="6" count="14" type="stmt"/>
-        <line num="8" count="250" type="stmt"/>
-        <line num="10" count="264" type="stmt"/>
-        <line num="12" count="1" type="stmt"/>
-        <line num="13" count="14" type="stmt"/>
-        <line num="14" count="14" type="stmt"/>
-        <line num="15" count="14" type="stmt"/>
-        <line num="17" count="84" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="21" count="98" type="stmt"/>
-        <line num="22" count="98" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
-        <line num="26" count="1848" type="stmt"/>
-        <line num="27" count="1848" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="31" count="1848" type="stmt"/>
-        <line num="32" count="1848" type="cond" truecount="2" falsecount="0"/>
-        <line num="33" count="8" type="stmt"/>
-        <line num="34" count="8" type="stmt"/>
-        <line num="36" count="1840" type="stmt"/>
-        <line num="40" count="1" type="stmt"/>
-        <line num="48" count="14" type="stmt"/>
-        <line num="49" count="14" type="stmt"/>
-        <line num="51" count="14" type="stmt"/>
-        <line num="57" count="98" type="stmt"/>
-        <line num="63" count="264" type="stmt"/>
-        <line num="66" count="1848" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="18" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
       </file>
     </package>
     <package name="test">
-      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
       <file name="domManipulators.ts" path="/Users/ivan/websites/tdd_react/test/domManipulators.ts">
-        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <metrics statements="4" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
         <line num="2" count="1" type="stmt"/>
-        <line num="3" count="13" type="stmt"/>
-        <line num="4" count="13" type="stmt"/>
-        <line num="5" count="13" type="stmt"/>
+        <line num="3" count="23" type="stmt"/>
+        <line num="4" count="23" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
       </file>
     </package>
   </project>

@@ -98,7 +98,7 @@ describe("AppointmentForm", () => {
 
       expect(startsAtField(1).value).toEqual("on");
     });
-    it("saves new value when submitted", () => {
+    it.skip("saves new value when submitted", () => {
       expect.hasAssertions();
       const today = new Date();
       const availableTimeSlots = [{ startsAt: today.setHours(9, 0, 0, 0) }, { startsAt: today.setHours(9, 30, 0, 0) }];
