@@ -25,3 +25,8 @@ export const createContainer = () => {
     submit: simulateEventAndWait("submit"),
   };
 };
+export const withEvent = (name, value) => {
+  return {
+    target: { name, value },
+  };
+};

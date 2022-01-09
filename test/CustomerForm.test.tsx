@@ -1,13 +1,15 @@
 import React from "react";
 import "whatwg-fetch";
 import { CustomerForm } from "../src/CustomerForm";
-import { createContainer } from "./domManipulators";
+import { createContainer, withEvent } from "./domManipulators";
 import { fetchRequestOfBody, fetchResponseError, fetchResponseOk } from "./spyHelpers";
 describe("CustomerForm", () => {
-  let render, container, form, field, labelFor, element, change, submit;
-
+  let render, container, element, change, submit;
+  const form = (id) => container.querySelector(`form[id="${id}"]`);
+  const field = (name) => form("customer").elements[name];
+  const labelFor = (formElement) => container.querySelector(`label[for="${formElement}"]`);
   let fetchSpy;
-
+  const originalFetch = window.fetch;
   const expectToBeInputFieldOfTypeText = (formElement) => {
     expect(formElement).not.toBeNull();
     expect(formElement.tagName).toEqual("INPUT");
@@ -18,14 +20,14 @@ describe("CustomerForm", () => {
   const itRendersAsATextBox = (fieldName) =>
     it("renders as a text box", () => {
       render(<CustomerForm />);
-      expectToBeInputFieldOfTypeText(field("customer", fieldName));
+      expectToBeInputFieldOfTypeText(field(fieldName));
     });
 
   const itIncludesTheExistingValue = (fieldName) =>
     it("includes the existing value", () => {
       render(<CustomerForm {...{ [fieldName]: fieldName }} />);
 
-      expect(field("fieldName").value).toEqual(fieldName);
+      expect(field(fieldName).value).toEqual(fieldName);
     });
 
   const itRendersALabelForTheField = (labelName, value) => {
@@ -65,9 +67,7 @@ describe("CustomerForm", () => {
     it("saves new value when submitted", async () => {
       render(<CustomerForm {...{ [fieldName]: "existingValue" }} />);
 
-      change(field(fieldName), {
-        target: { value: "newValue", name: fieldName },
-      });
+      change(field(fieldName), withEvent(fieldName, "newValue"));
       submit(form("customer"));
       expect(fetchRequestOfBody(fetchSpy)).toMatchObject({
         [fieldName]: "newValue",
@@ -75,13 +75,14 @@ describe("CustomerForm", () => {
     });
 
   beforeEach(() => {
-    ({ render, container, form, field, labelFor, element, change, submit } = createContainer());
+    ({ render, container, element, change, submit } = createContainer());
     fetchSpy = jest.fn(() => fetchResponseOk({}));
     window.fetch = fetchSpy;
     jest.spyOn(window, "fetch").mockReturnValue(fetchResponseOk({}));
   });
   afterEach(() => {
-    window.fetch.mockRestore();
+    window.fetch = originalFetch;
+    //window.fetch.mockRestore();
   });
   it("renders a form", () => {
     render(<CustomerForm firstName={undefined} />);
