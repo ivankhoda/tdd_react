@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1641755209387" clover="3.2.0">
-  <project timestamp="1641755209387" name="All files">
-    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
+<coverage generated="1641758259321" clover="3.2.0">
+  <project timestamp="1641758259321" name="All files">
+    <metrics statements="35" coveredstatements="33" conditionals="0" coveredconditionals="0" methods="26" coveredmethods="19" elements="61" coveredelements="52" complexity="0" loc="35" ncloc="35" packages="2" files="4" classes="4"/>
+    <package name="src">
+      <metrics statements="15" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="5"/>
+      <file name="AppointmentForm.tsx" path="/Users/ivan/websites/tdd_react/src/AppointmentForm.tsx">
+        <metrics statements="7" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="2"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="13" count="12" type="stmt"/>
+        <line num="17" count="12" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="25" count="12" type="stmt"/>
+        <line num="31" count="64" type="stmt"/>
+        <line num="46" count="2" type="stmt"/>
+      </file>
+      <file name="AppointmentFormLoader.tsx" path="/Users/ivan/websites/tdd_react/src/AppointmentFormLoader.tsx">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="7" type="stmt"/>
+        <line num="5" count="6" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="17" count="6" type="stmt"/>
+      </file>
+    </package>
+    <package name="test">
+      <metrics statements="20" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="19" coveredmethods="14"/>
+      <file name="domManipulators.ts" path="/Users/ivan/websites/tdd_react/test/domManipulators.ts">
+        <metrics statements="15" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="15" coveredmethods="10"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="43" type="stmt"/>
+        <line num="6" count="43" type="stmt"/>
+        <line num="8" count="43" type="stmt"/>
+        <line num="9" count="43" type="stmt"/>
+        <line num="10" count="43" type="stmt"/>
+        <line num="12" count="86" type="stmt"/>
+        <line num="13" count="43" type="stmt"/>
+        <line num="14" count="9" type="stmt"/>
+        <line num="16" count="43" type="stmt"/>
+        <line num="18" count="43" type="stmt"/>
+        <line num="19" count="43" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="32" count="3" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+      </file>
+      <file name="spyHelpers.ts" path="/Users/ivan/websites/tdd_react/test/spyHelpers.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="32" type="stmt"/>
+        <line num="4" count="10" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>
