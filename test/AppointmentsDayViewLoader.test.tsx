@@ -58,4 +58,9 @@ describe("AppointmentsDayViewLoader", () => {
     await renderAndWait(<AppointmentsDayViewLoader today={tomorrow} />);
     expect(window.fetch).toHaveBeenLastCalledWith(`/appointments/${from}-${to}`, expect.anything());
   });
+  it("calls window.fetch just once", async () => {
+    await renderAndWait(<AppointmentsDayViewLoader />);
+    await renderAndWait(<AppointmentsDayViewLoader />);
+    expect(window.fetch.mock.calls.length).toBe(1);
+  });
 });

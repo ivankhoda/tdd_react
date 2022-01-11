@@ -102,36 +102,36 @@
 <a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">43x</span>
-<span class="cline-any cline-yes">43x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">43x</span>
-<span class="cline-any cline-yes">43x</span>
-<span class="cline-any cline-yes">43x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">86x</span>
-<span class="cline-any cline-yes">43x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">43x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">43x</span>
-<span class="cline-any cline-yes">43x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -140,13 +140,13 @@ import ReactTestUtils, { act } from "react-dom/test-utils";
 &nbsp;
 export const createContainer = () =&gt; {
   const container = document.createElement("div");
-  const form = <span class="fstat-no" title="function not covered" >(i</span>d) =&gt; <span class="cstat-no" title="statement not covered" >container.querySelector(`form[id="${id}"]`) as HTMLFormElement;</span>
+  const form = (id) =&gt; container.querySelector(`form[id="${id}"]`) as HTMLFormElement;
 &nbsp;
   const field = <span class="fstat-no" title="function not covered" >(f</span>ormId, name) =&gt; <span class="cstat-no" title="statement not covered" >form(formId).elements[name];</span>
   const labelFor = <span class="fstat-no" title="function not covered" >(f</span>ormElement) =&gt; <span class="cstat-no" title="statement not covered" >container.querySelector(`label[for="${formElement}"]`);</span>
-  const element = (selector) =&gt; container.querySelector(selector);
+  const element = <span class="fstat-no" title="function not covered" >(s</span>elector) =&gt; <span class="cstat-no" title="statement not covered" >container.querySelector(selector);</span>
 &nbsp;
-  const simulateEvent = (eventName) =&gt; (element, eventData) =&gt; ReactTestUtils.Simulate[eventName](element, eventData);
+  const simulateEvent = (eventName) =&gt; <span class="fstat-no" title="function not covered" >(e</span>lement, eventData) =&gt; <span class="cstat-no" title="statement not covered" >ReactTestUtils.Simulate[eventName](element, eventData);</span>
   const simulateEventAndWait = (eventName) =&gt; async (element, eventData) =&gt;
     await act(async () =&gt; ReactTestUtils.Simulate[eventName](element, eventData));
 &nbsp;
@@ -155,7 +155,7 @@ export const createContainer = () =&gt; {
       act(() =&gt; {
         ReactDOM.render(component, container);
       }),
-    renderAndWait: <span class="fstat-no" title="function not covered" >as</span>ync (component) =&gt; <span class="cstat-no" title="statement not covered" >await act(<span class="fstat-no" title="function not covered" >as</span>ync () =&gt; <span class="cstat-no" title="statement not covered" >ReactDOM.render(component, container))</span>,</span>
+    renderAndWait: async (component) =&gt; await act(async () =&gt; ReactDOM.render(component, container)),
     container,
     form,
     field,
@@ -166,8 +166,8 @@ export const createContainer = () =&gt; {
     submit: simulateEventAndWait("submit"),
   };
 };
-export const withEvent = (name, value) =&gt; {
-  return {
+export const withEvent = <span class="fstat-no" title="function not covered" >(n</span>ame, value) =&gt; {
+<span class="cstat-no" title="statement not covered" >  return {</span>
     target: { name, value },
   };
 };
@@ -178,7 +178,7 @@ export const withEvent = (name, value) =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener">istanbul</a>
-                at Sun Jan 09 2022 22:57:39 GMT+0300 (Moscow Standard Time)
+                at Tue Jan 11 2022 23:16:14 GMT+0300 (Moscow Standard Time)
             </div>
         </div>
         <script src="../prettify.js"></script>

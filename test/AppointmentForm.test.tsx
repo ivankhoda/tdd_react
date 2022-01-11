@@ -4,6 +4,7 @@ import { AppointmentForm } from "../src/AppointmentForm";
 import { createContainer } from "./domManipulators";
 describe("AppointmentForm", () => {
   let render, container;
+  const customer = { id: 123 };
   const field = (name) => form("appointment").elements[name];
 
   const findOption = (dropdownNode, textContent) => {

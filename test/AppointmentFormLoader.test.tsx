@@ -1,16 +1,17 @@
 import React from "react";
 import "whatwg-fetch";
 import * as AppointmentFormExports from "../src/AppointmentForm";
+import { AppointmentForm } from "../src/AppointmentForm";
 import { AppointmentFormLoader } from "../src/AppointmentFormLoader";
 import { createContainer } from "./domManipulators";
-import { fetchResponseOk } from "./spyHelpers";
+import { fetchRequestOfBody, fetchResponseOk } from "./spyHelpers";
 
 describe("AppointmentFormLoader", () => {
-  let container, renderAndWait;
+  let container, renderAndWait, render, submit, form;
   const today = new Date();
   const availableTimeSlots = [{ startsAt: today.setHours(9, 0, 0, 0) }];
   beforeEach(() => {
-    ({ container, renderAndWait } = createContainer());
+    ({ container, renderAndWait, render, submit, form } = createContainer());
     jest.spyOn(window, "fetch").mockReturnValue(fetchResponseOk(availableTimeSlots));
     jest.spyOn(AppointmentFormExports, "AppointmentForm").mockReturnValue(null);
   });
@@ -42,5 +43,21 @@ describe("AppointmentFormLoader", () => {
 
       expect.anything()
     );
+  });
+  it("passes props through to children", async () => {
+    await renderAndWait(<AppointmentFormLoader testProp={123} />);
+
+    expect(AppointmentFormExports.AppointmentForm).toHaveBeenCalledWith(
+      expect.objectContaining({ testProp: 123 }),
+      expect.anything()
+    );
+  });
+  it("passes the customer id to fetch when submitting", async () => {
+    const customer = { id: 123 };
+    render(<AppointmentForm customer={customer} />);
+    await submit(form("appointment"));
+    expect(fetchRequestOfBody(window.fetch)).toMatchObject({
+      customer: customer.id,
+    });
   });
 });

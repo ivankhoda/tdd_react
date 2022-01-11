@@ -9,6 +9,7 @@ export const AppointmentForm = ({
   today,
   availableTimeSlots,
   startsAt,
+  customer,
 }) => {
   const [appointment, setAppointment] = useState({
     service,
@@ -19,14 +20,15 @@ export const AppointmentForm = ({
       setAppointment((appointment) => ({
         ...appointment,
         startsAt: parseInt(value),
+        customer: customer.id,
       })),
     []
   );
   return (
     <form id="appointment">
       <label htmlFor="service">Salon service</label>
-      <select name="service" value={service} readOnly>
-        <option />{" "}
+      <select name="service" value={service}>
+        <option />
         {selectableServices.map((s) => (
           <option key={s}>{s}</option>
         ))}
