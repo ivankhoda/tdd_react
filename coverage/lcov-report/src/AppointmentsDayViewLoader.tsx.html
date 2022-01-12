@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">18.18% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>2/11</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>0/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">18.18% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>11/11</span>
+                <span class='fraction'>2/11</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -90,47 +90,47 @@
 <a name='L25'></a><a href='#L25'>25</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useEffect, useState } from "react";
 import { AppointmentsDayView } from "./AppointmentsDayView";
-export const AppointmentsDayViewLoader = ({ today }) =&gt; {
-  const [appointments, setAppointments] = useState([]);
-  const from = today.setHours(0, 0, 0, 0);
-  const to = today.setHours(23, 59, 59, 999);
+export const AppointmentsDayViewLoader = <span class="fstat-no" title="function not covered" >({</span> today }) =&gt; {
+  const [appointments, setAppointments] = <span class="cstat-no" title="statement not covered" >useState([]);</span>
+  const from = <span class="cstat-no" title="statement not covered" >today.setHours(0, 0, 0, 0);</span>
+  const to = <span class="cstat-no" title="statement not covered" >today.setHours(23, 59, 59, 999);</span>
 &nbsp;
-  useEffect(() =&gt; {
-    const fetchAppointments = async () =&gt; {
-      const result = await window.fetch(`/appointments/${from}-${to}`, {
+<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+    const fetchAppointments = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {</span>
+      const result = <span class="cstat-no" title="statement not covered" >await window.fetch(`/appointments/${from}-${to}`, {</span>
         method: "GET",
         credentials: "same-origin",
         headers: { "Content-Type": "application/json" },
       });
-      setAppointments(await result.json());
+<span class="cstat-no" title="statement not covered" >      setAppointments(await result.json());</span>
     };
-    fetchAppointments();
+<span class="cstat-no" title="statement not covered" >    fetchAppointments();</span>
   }, [today]);
 &nbsp;
-  return &lt;AppointmentsDayView appointments={appointments} /&gt;;
+<span class="cstat-no" title="statement not covered" >  return &lt;AppointmentsDayView appointments={appointments} /&gt;;</span>
 };
 AppointmentsDayViewLoader.defaultProps = {
   today: new Date(),
@@ -142,7 +142,7 @@ AppointmentsDayViewLoader.defaultProps = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener">istanbul</a>
-                at Tue Jan 11 2022 22:48:02 GMT+0300 (Moscow Standard Time)
+                at Wed Jan 12 2022 21:54:14 GMT+0300 (Moscow Standard Time)
             </div>
         </div>
         <script src="../prettify.js"></script>
