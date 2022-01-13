@@ -4,7 +4,7 @@ import { CustomerForm } from "../src/CustomerForm";
 import { createContainer, withEvent } from "./domManipulators";
 import { fetchRequestOfBody, fetchResponseError, fetchResponseOk } from "./spyHelpers";
 describe("CustomerForm", () => {
-  let render, container, element, change, submit;
+  let render, container, element, change, submit, blur;
   const form = (id) => container.querySelector(`form[id="${id}"]`);
   const field = (name) => form("customer").elements[name];
   const labelFor = (formElement) => container.querySelector(`label[for="${formElement}"]`);
@@ -75,7 +75,7 @@ describe("CustomerForm", () => {
     });
 
   beforeEach(() => {
-    ({ render, container, element, change, submit } = createContainer());
+    ({ render, container, element, change, submit, blur } = createContainer());
     fetchSpy = jest.fn(() => fetchResponseOk({}));
     window.fetch = fetchSpy;
     jest.spyOn(window, "fetch").mockReturnValue(fetchResponseOk({}));
@@ -102,6 +102,12 @@ describe("CustomerForm", () => {
     itSubmitsExistingValue("firstName");
 
     itSubmitsNewValue("firstName");
+    it("displays error after blur when first name field is blank", () => {
+      render(<CustomerForm />);
+      blur(field("customer"), withEvent("firstName", " "));
+      expect(element(".error")).not.toBeNull();
+      expect(element(".error").textContent).toMatch("First name is required");
+    });
   });
   describe("last name field", () => {
     itRendersAsATextBox("lastName");

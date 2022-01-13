@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.33% </span>
+                <span class="strong">93.75% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>14/15</span>
+                <span class='fraction'>15/16</span>
             </div>
         
             
@@ -99,39 +99,45 @@
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">87x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -140,13 +146,15 @@ import ReactTestUtils, { act } from "react-dom/test-utils";
 &nbsp;
 export const createContainer = () =&gt; {
   const container = document.createElement("div");
-  const form = (id) =&gt; container.querySelector(`form[id="${id}"]`) as HTMLFormElement;
+  const form = <span class="fstat-no" title="function not covered" >(i</span>d) =&gt; <span class="cstat-no" title="statement not covered" >container.querySelector(`form[id="${id}"]`) as HTMLFormElement;</span>
 &nbsp;
   const field = <span class="fstat-no" title="function not covered" >(f</span>ormId, name) =&gt; <span class="cstat-no" title="statement not covered" >form(formId).elements[name];</span>
   const labelFor = <span class="fstat-no" title="function not covered" >(f</span>ormElement) =&gt; <span class="cstat-no" title="statement not covered" >container.querySelector(`label[for="${formElement}"]`);</span>
-  const element = <span class="fstat-no" title="function not covered" >(s</span>elector) =&gt; <span class="cstat-no" title="statement not covered" >container.querySelector(selector);</span>
+  const element = (selector) =&gt; container.querySelector(selector);
 &nbsp;
-  const simulateEvent = (eventName) =&gt; <span class="fstat-no" title="function not covered" >(e</span>lement, eventData) =&gt; <span class="cstat-no" title="statement not covered" >ReactTestUtils.Simulate[eventName](element, eventData);</span>
+  const simulateEvent = (eventName) =&gt; (element, eventData) =&gt; {
+    ReactTestUtils.Simulate[eventName](element, eventData), console.log(ReactTestUtils.Simulate, eventName);
+  };
   const simulateEventAndWait = (eventName) =&gt; async (element, eventData) =&gt;
     await act(async () =&gt; ReactTestUtils.Simulate[eventName](element, eventData));
 &nbsp;
@@ -155,7 +163,7 @@ export const createContainer = () =&gt; {
       act(() =&gt; {
         ReactDOM.render(component, container);
       }),
-    renderAndWait: async (component) =&gt; await act(async () =&gt; ReactDOM.render(component, container)),
+    renderAndWait: <span class="fstat-no" title="function not covered" >as</span>ync (component) =&gt; <span class="cstat-no" title="statement not covered" >await act(<span class="fstat-no" title="function not covered" >as</span>ync () =&gt; <span class="cstat-no" title="statement not covered" >ReactDOM.render(component, container))</span>,</span>
     container,
     form,
     field,
@@ -164,10 +172,11 @@ export const createContainer = () =&gt; {
     click: simulateEvent("click"),
     change: simulateEvent("change"),
     submit: simulateEventAndWait("submit"),
+    blur: simulateEvent("blur"),
   };
 };
-export const withEvent = <span class="fstat-no" title="function not covered" >(n</span>ame, value) =&gt; {
-<span class="cstat-no" title="statement not covered" >  return {</span>
+export const withEvent = (name, value) =&gt; {
+  return {
     target: { name, value },
   };
 };
@@ -178,7 +187,7 @@ export const withEvent = <span class="fstat-no" title="function not covered" >(n
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener">istanbul</a>
-                at Tue Jan 11 2022 23:16:14 GMT+0300 (Moscow Standard Time)
+                at Thu Jan 13 2022 23:00:38 GMT+0300 (Moscow Standard Time)
             </div>
         </div>
         <script src="../prettify.js"></script>

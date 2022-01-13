@@ -27,7 +27,7 @@ export const AppointmentForm = ({
   return (
     <form id="appointment">
       <label htmlFor="service">Salon service</label>
-      <select name="service" value={service}>
+      <select name="service" defaultValue={service}>
         <option />
         {selectableServices.map((s) => (
           <option key={s}>{s}</option>
