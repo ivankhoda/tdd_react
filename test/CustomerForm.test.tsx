@@ -4,12 +4,18 @@ import { CustomerForm } from "../src/CustomerForm";
 import { createContainer, withEvent } from "./domManipulators";
 import { fetchRequestOfBody, fetchResponseError, fetchResponseOk } from "./spyHelpers";
 describe("CustomerForm", () => {
+  const validCustomer = {
+    firstName: "first",
+    lastName: "last",
+    phoneNumber: "123456789",
+  };
   let render, container, element, change, submit, blur;
   const form = (id) => container.querySelector(`form[id="${id}"]`);
-  const field = (name) => form("customer").elements[name];
+  // const field = (name) => form("customer").elements[name];
+  const field = (formId, name) => form(formId).elements[name];
   const labelFor = (formElement) => container.querySelector(`label[for="${formElement}"]`);
   let fetchSpy;
-  const originalFetch = window.fetch;
+
   const expectToBeInputFieldOfTypeText = (formElement) => {
     expect(formElement).not.toBeNull();
     expect(formElement.tagName).toEqual("INPUT");
@@ -19,20 +25,20 @@ describe("CustomerForm", () => {
   //TEST FUNCTIONS
   const itRendersAsATextBox = (fieldName) =>
     it("renders as a text box", () => {
-      render(<CustomerForm />);
-      expectToBeInputFieldOfTypeText(field(fieldName));
+      render(<CustomerForm {...validCustomer} />);
+      expectToBeInputFieldOfTypeText(field("customer", fieldName));
     });
 
   const itIncludesTheExistingValue = (fieldName) =>
     it("includes the existing value", () => {
-      render(<CustomerForm {...{ [fieldName]: fieldName }} />);
+      render(<CustomerForm {...validCustomer} {...{ [fieldName]: fieldName }} />);
 
-      expect(field(fieldName).value).toEqual(fieldName);
+      expect(field("customer", fieldName).value).toEqual(fieldName);
     });
 
   const itRendersALabelForTheField = (labelName, value) => {
     it("renders a label for the first name field", () => {
-      render(<CustomerForm {...{ [labelName]: value }} />);
+      render(<CustomerForm {...validCustomer} {...{ [labelName]: value }} />);
       expect(labelFor(labelName)).not.toBeNull();
       expect(labelFor(labelName).textContent).toEqual(value);
     });
@@ -40,21 +46,21 @@ describe("CustomerForm", () => {
 
   const itAssignsAnIdThatMatchesTheLabelId = (id) => {
     it("assigns an id that matches the label id to the  name field", () => {
-      render(<CustomerForm />);
-      expect(field(id).id).toEqual(id);
+      render(<CustomerForm {...validCustomer} />);
+      expect(field("customer", id).id).toEqual(id);
     });
   };
 
   const itRendersALabel = (label, value) => {
     it("renders a label for the name field", () => {
-      render(<CustomerForm />);
+      render(<CustomerForm {...validCustomer} />);
       expect(labelFor(label).textContent).toEqual(value);
     });
   };
 
   const itSubmitsExistingValue = (fieldName) =>
     it("saves existing value when submitted", async () => {
-      render(<CustomerForm {...{ [fieldName]: "value" }} />);
+      render(<CustomerForm {...validCustomer} {...{ [fieldName]: "value" }} />);
 
       submit(form("customer"));
 
@@ -65,14 +71,25 @@ describe("CustomerForm", () => {
 
   const itSubmitsNewValue = (fieldName) =>
     it("saves new value when submitted", async () => {
-      render(<CustomerForm {...{ [fieldName]: "existingValue" }} />);
+      render(<CustomerForm {...validCustomer} {...{ [fieldName]: "existingValue" }} />);
 
-      change(field(fieldName), withEvent(fieldName, "newValue"));
+      change(field("customer", fieldName), withEvent(fieldName, "newValue"));
       submit(form("customer"));
       expect(fetchRequestOfBody(fetchSpy)).toMatchObject({
         [fieldName]: "newValue",
       });
     });
+
+  const itInvalidatesFieldWithValue = (fieldName, value, description) => {
+    it(`displays error after blur when ${fieldName} field is'${value}'`, () => {
+      render(<CustomerForm {...validCustomer} />);
+
+      blur(field("customer", fieldName), withEvent(fieldName, value));
+      expect(form("customer")).not.toBeNull();
+      expect(element(".error")).not.toBeNull();
+      expect(element(".error").textContent).toMatch(description);
+    });
+  };
 
   beforeEach(() => {
     ({ render, container, element, change, submit, blur } = createContainer());
@@ -81,11 +98,10 @@ describe("CustomerForm", () => {
     jest.spyOn(window, "fetch").mockReturnValue(fetchResponseOk({}));
   });
   afterEach(() => {
-    window.fetch = originalFetch;
-    //window.fetch.mockRestore();
+    window.fetch.mockRestore();
   });
   it("renders a form", () => {
-    render(<CustomerForm firstName={undefined} />);
+    render(<CustomerForm {...validCustomer} />);
     expect(form("customer")).not.toBeNull();
   });
   describe("first name field", () => {
@@ -102,12 +118,7 @@ describe("CustomerForm", () => {
     itSubmitsExistingValue("firstName");
 
     itSubmitsNewValue("firstName");
-    it("displays error after blur when first name field is blank", () => {
-      render(<CustomerForm />);
-      blur(field("customer"), withEvent("firstName", " "));
-      expect(element(".error")).not.toBeNull();
-      expect(element(".error").textContent).toMatch("First name is required");
-    });
+    itInvalidatesFieldWithValue("firstName", " ", "First name is required");
   });
   describe("last name field", () => {
     itRendersAsATextBox("lastName");
@@ -123,6 +134,8 @@ describe("CustomerForm", () => {
     itRendersALabel("lastName", "Last name");
 
     itSubmitsExistingValue("lastName");
+
+    itInvalidatesFieldWithValue("lastName", " ", "Last name is required");
   });
   describe("phone number field", () => {
     itRendersAsATextBox("phoneNumber");
@@ -138,6 +151,13 @@ describe("CustomerForm", () => {
     itRendersALabel("phoneNumber", "Phone number");
 
     itSubmitsExistingValue("phoneNumber");
+
+    itInvalidatesFieldWithValue("phoneNumber", " ", "Phone number is required");
+    itInvalidatesFieldWithValue(
+      "phoneNumber",
+      "invalid",
+      "Only numbers, spaces and these symbols are allowed: ( ) + -"
+    );
   });
 
   it("has a submit button", () => {
@@ -146,7 +166,7 @@ describe("CustomerForm", () => {
     expect(submitButton).not.toBeNull();
   });
   it("calls fetch with the right properties when submitting data", async () => {
-    render(<CustomerForm />);
+    render(<CustomerForm {...validCustomer} />);
     submit(form("customer"));
 
     expect(window.fetch).toHaveBeenCalledWith(
@@ -162,7 +182,7 @@ describe("CustomerForm", () => {
     const customer = { id: 123 };
     fetchSpy.mockReturnValue(fetchResponseOk(customer));
     const saveSpy = jest.fn();
-    render(<CustomerForm onSave={saveSpy} />);
+    render(<CustomerForm {...validCustomer} onSave={saveSpy} />);
     await submit(form("customer"));
 
     expect(saveSpy).toHaveBeenCalledWith(customer);
@@ -171,14 +191,14 @@ describe("CustomerForm", () => {
   it("does not notify onSave if the POST request returns an error", async () => {
     fetchSpy.mockReturnValue(fetchResponseError());
     const saveSpy = jest.fn();
-    render(<CustomerForm onSave={saveSpy} />);
+    render(<CustomerForm {...validCustomer} onSave={saveSpy} />);
     await submit(form("customer"));
 
     expect(saveSpy).not.toHaveBeenCalled();
   });
   it("prevents the default action when submitting the form", async () => {
     const preventDefaultSpy = jest.fn();
-    render(<CustomerForm />);
+    render(<CustomerForm {...validCustomer} />);
     await submit(form("customer"), {
       preventDefault: preventDefaultSpy,
     });
@@ -187,10 +207,25 @@ describe("CustomerForm", () => {
   });
   it("renders error message when fetch call fails", async () => {
     fetchSpy.mockReturnValue(Promise.resolve({ ok: false }));
-    render(<CustomerForm />);
+    render(<CustomerForm {...validCustomer} />);
     await submit(form("customer"));
 
     expect(element(".error")).not.toBeNull();
     expect(element(".error").textContent).toMatch("error occurred");
+  });
+  it("accepts standard phone number characters when validating", () => {
+    render(<CustomerForm {...validCustomer} />);
+    blur(element("[name='phoneNumber']"), withEvent("phoneNumber", "0123456789+()- "));
+    expect(element(".error")).toBeNull();
+  });
+  it("accepts standard phone number characters when validating", () => {
+    render(<CustomerForm {...validCustomer} />);
+    blur(element("[name='phoneNumber']"), withEvent("phoneNumber", "0123456789+()- "));
+    expect(element(".error")).toBeNull();
+  });
+  it("does not submit the form when there are validation errors", async () => {
+    render(<CustomerForm />);
+    await submit(form("customer"));
+    expect(window.fetch).not.toHaveBeenCalled();
   });
 });

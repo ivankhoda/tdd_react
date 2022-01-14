@@ -11,33 +11,56 @@ export const CustomerForm = ({ firstName, lastName, phoneNumber, onSave }) => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await window.fetch("/customers", {
-      method: "POST",
-      body: JSON.stringify(customer),
-      credentials: "same-origin",
-      headers: { "Content-Type": "application/json" },
-    });
-    if (result.ok) {
-      const customerWithId = await result.json();
-      onSave(customerWithId);
-    } else {
-      setError(true);
+    const validationResult = validateMany(customer);
+    if (!anyErrors(validationResult)) {
+      const result = await window.fetch("/customers", {
+        method: "POST",
+        body: JSON.stringify(customer),
+        credentials: "same-origin",
+        headers: { "Content-Type": "application/json" },
+      });
+      if (result.ok) {
+        const customerWithId = await result.json();
+        onSave(customerWithId);
+      } else {
+        setError(true);
+      }
     }
   };
-  const required = (value) => (!value || value.trim() === "" ? "First name is required" : undefined);
+  const required = (description) => (value) => !value || value.trim() === "" ? description : undefined;
+  const match = (re, description) => (value) => !value.match(re) ? description : undefined;
+  const validateMany = (fields) =>
+    Object.entries(fields).reduce(
+      (result, [name, value]) => ({
+        ...result,
+        [name]: validators[name](value),
+      }),
+      {}
+    );
+  const anyErrors = (errors) => Object.values(errors).some((error) => error !== undefined);
+  const list =
+    (...validators) =>
+    (value) =>
+      validators.reduce((result, validator) => result || validator(value), undefined);
+  const validators = {
+    firstName: required("First name is required"),
+    lastName: required("Last name is required"),
+    phoneNumber: list(
+      required("Phone number is required"),
+      match(/^[0-9+()\- ]*$/, "Only numbers, spaces and these symbols are allowed: ( ) + -")
+    ),
+  };
+
   const handleBlur = ({ target }) => {
-    const validators = {
-      firstName: required,
-    };
     const result = validators[target.name](target.value);
     setValidationErrors({
       ...validationErrors,
       [target.name]: result,
     });
   };
-  const hasFirstNameError = (fieldName) => validationErrors[fieldName] !== undefined;
-  const renderFirstNameError = (fieldName) => {
-    if (hasFirstNameError(fieldName)) {
+  const hasNameError = (fieldName) => validationErrors[fieldName] !== undefined;
+  const renderError = (fieldName) => {
+    if (hasNameError(fieldName)) {
       return <span className="error">{validationErrors[fieldName]} </span>;
     }
   };
@@ -55,11 +78,20 @@ export const CustomerForm = ({ firstName, lastName, phoneNumber, onSave }) => {
         onChange={handleChange}
         onBlur={handleBlur}
       />
-      {renderFirstNameError()}
+      {renderError("firstName")}
       <label htmlFor="lastName">Last name</label>
-      <input type="text" name="lastName" id="lastName" value={lastName} onChange={handleChange} />{" "}
+      <input type="text" name="lastName" id="lastName" value={lastName} onChange={handleChange} onBlur={handleBlur} />
+      {renderError("lastName")}
       <label htmlFor="phoneNumber">Phone number</label>
-      <input type="text" name="phoneNumber" id="phoneNumber" value={phoneNumber} onChange={handleChange} />
+      <input
+        type="text"
+        name="phoneNumber"
+        id="phoneNumber"
+        value={phoneNumber}
+        onChange={handleChange}
+        onBlur={handleBlur}
+      />
+      {renderError("phoneNumber")}
       <input type="submit" value="Add" />
     </form>
   );

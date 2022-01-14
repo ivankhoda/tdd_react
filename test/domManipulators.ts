@@ -10,7 +10,7 @@ export const createContainer = () => {
   const element = (selector) => container.querySelector(selector);
 
   const simulateEvent = (eventName) => (element, eventData) => {
-    ReactTestUtils.Simulate[eventName](element, eventData), console.log(ReactTestUtils.Simulate, eventName);
+    ReactTestUtils.Simulate[eventName](element, eventData);
   };
   const simulateEventAndWait = (eventName) => async (element, eventData) =>
     await act(async () => ReactTestUtils.Simulate[eventName](element, eventData));
