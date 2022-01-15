@@ -1,8 +1,10 @@
 import { default as React, useState } from "react";
+import { anyErrors, hasError, list, match, required, validateMany } from "./formValidation";
 export const CustomerForm = ({ firstName, lastName, phoneNumber, onSave }) => {
   const [customer, setCustomer] = useState({ firstName, lastName, phoneNumber });
   const [error, setError] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
+
   const handleChange = ({ target }) => {
     setCustomer((customer) => ({
       ...customer,
@@ -11,7 +13,7 @@ export const CustomerForm = ({ firstName, lastName, phoneNumber, onSave }) => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const validationResult = validateMany(customer);
+    const validationResult = validateMany(validators, customer);
     if (!anyErrors(validationResult)) {
       const result = await window.fetch("/customers", {
         method: "POST",
@@ -25,23 +27,11 @@ export const CustomerForm = ({ firstName, lastName, phoneNumber, onSave }) => {
       } else {
         setError(true);
       }
+    } else {
+      setValidationErrors(validationResult);
     }
   };
-  const required = (description) => (value) => !value || value.trim() === "" ? description : undefined;
-  const match = (re, description) => (value) => !value.match(re) ? description : undefined;
-  const validateMany = (fields) =>
-    Object.entries(fields).reduce(
-      (result, [name, value]) => ({
-        ...result,
-        [name]: validators[name](value),
-      }),
-      {}
-    );
-  const anyErrors = (errors) => Object.values(errors).some((error) => error !== undefined);
-  const list =
-    (...validators) =>
-    (value) =>
-      validators.reduce((result, validator) => result || validator(value), undefined);
+
   const validators = {
     firstName: required("First name is required"),
     lastName: required("Last name is required"),
@@ -52,15 +42,14 @@ export const CustomerForm = ({ firstName, lastName, phoneNumber, onSave }) => {
   };
 
   const handleBlur = ({ target }) => {
-    const result = validators[target.name](target.value);
-    setValidationErrors({
-      ...validationErrors,
-      [target.name]: result,
+    const result = validateMany(validators, {
+      [target.name]: target.value,
     });
+    setValidationErrors({ ...validationErrors, ...result });
   };
-  const hasNameError = (fieldName) => validationErrors[fieldName] !== undefined;
+
   const renderError = (fieldName) => {
-    if (hasNameError(fieldName)) {
+    if (hasError(validationErrors, fieldName)) {
       return <span className="error">{validationErrors[fieldName]} </span>;
     }
   };

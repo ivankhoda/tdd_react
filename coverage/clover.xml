@@ -1,46 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1642189194270" clover="3.2.0">
-  <project timestamp="1642189194270" name="All files">
-    <metrics statements="56" coveredstatements="55" conditionals="16" coveredconditionals="16" methods="39" coveredmethods="34" elements="111" coveredelements="105" complexity="0" loc="56" ncloc="56" packages="2" files="3" classes="3"/>
+<coverage generated="1642257853991" clover="3.2.0">
+  <project timestamp="1642257853991" name="All files">
+    <metrics statements="57" coveredstatements="56" conditionals="16" coveredconditionals="16" methods="39" coveredmethods="34" elements="112" coveredelements="106" complexity="0" loc="57" ncloc="57" packages="2" files="4" classes="4"/>
     <package name="src">
-      <metrics statements="35" coveredstatements="35" conditionals="16" coveredconditionals="16" methods="20" coveredmethods="20"/>
+      <metrics statements="36" coveredstatements="36" conditionals="16" coveredconditionals="16" methods="20" coveredmethods="20"/>
       <file name="CustomerForm.tsx" path="/Users/ivan/websites/tdd_react/src/CustomerForm.tsx">
-        <metrics statements="35" coveredstatements="35" conditionals="16" coveredconditionals="16" methods="20" coveredmethods="20"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="44" type="stmt"/>
-        <line num="4" count="44" type="stmt"/>
-        <line num="5" count="44" type="stmt"/>
-        <line num="6" count="44" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="12" count="44" type="stmt"/>
-        <line num="13" count="10" type="stmt"/>
-        <line num="14" count="10" type="stmt"/>
-        <line num="15" count="10" type="cond" truecount="2" falsecount="0"/>
-        <line num="16" count="8" type="stmt"/>
-        <line num="22" count="8" type="cond" truecount="2" falsecount="0"/>
-        <line num="23" count="6" type="stmt"/>
-        <line num="24" count="6" type="stmt"/>
-        <line num="26" count="2" type="stmt"/>
-        <line num="30" count="132" type="cond" truecount="4" falsecount="0"/>
-        <line num="31" count="44" type="cond" truecount="2" falsecount="0"/>
-        <line num="32" count="44" type="stmt"/>
-        <line num="33" count="10" type="stmt"/>
-        <line num="34" count="30" type="stmt"/>
-        <line num="40" count="44" type="stmt"/>
-        <line num="42" count="44" type="stmt"/>
-        <line num="43" count="44" type="stmt"/>
-        <line num="44" count="28" type="cond" truecount="2" falsecount="0"/>
-        <line num="45" count="44" type="stmt"/>
-        <line num="54" count="44" type="stmt"/>
-        <line num="55" count="6" type="stmt"/>
-        <line num="56" count="6" type="stmt"/>
-        <line num="61" count="132" type="stmt"/>
-        <line num="62" count="44" type="stmt"/>
-        <line num="63" count="132" type="cond" truecount="2" falsecount="0"/>
-        <line num="64" count="4" type="stmt"/>
-        <line num="67" count="44" type="stmt"/>
-        <line num="69" count="44" type="stmt"/>
-        <line num="99" count="1" type="stmt"/>
+        <metrics statements="26" coveredstatements="26" conditionals="8" coveredconditionals="8" methods="8" coveredmethods="8"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="48" type="stmt"/>
+        <line num="5" count="48" type="stmt"/>
+        <line num="6" count="48" type="stmt"/>
+        <line num="8" count="48" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="14" count="48" type="stmt"/>
+        <line num="15" count="11" type="stmt"/>
+        <line num="16" count="11" type="stmt"/>
+        <line num="17" count="11" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="8" type="stmt"/>
+        <line num="24" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="25" count="6" type="stmt"/>
+        <line num="26" count="6" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="31" count="3" type="stmt"/>
+        <line num="35" count="48" type="stmt"/>
+        <line num="44" count="48" type="stmt"/>
+        <line num="45" count="6" type="stmt"/>
+        <line num="48" count="6" type="stmt"/>
+        <line num="51" count="48" type="stmt"/>
+        <line num="52" count="144" type="cond" truecount="2" falsecount="0"/>
+        <line num="53" count="11" type="stmt"/>
+        <line num="56" count="48" type="stmt"/>
+        <line num="58" count="48" type="stmt"/>
+        <line num="88" count="1" type="stmt"/>
+      </file>
+      <file name="formValidation.ts" path="/Users/ivan/websites/tdd_react/src/formValidation.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="8" coveredconditionals="8" methods="12" coveredmethods="12"/>
+        <line num="1" count="144" type="cond" truecount="4" falsecount="0"/>
+        <line num="2" count="48" type="cond" truecount="2" falsecount="0"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="48" type="stmt"/>
+        <line num="6" count="30" type="cond" truecount="2" falsecount="0"/>
+        <line num="7" count="29" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="17" type="stmt"/>
+        <line num="10" count="39" type="stmt"/>
+        <line num="16" count="144" type="stmt"/>
       </file>
     </package>
     <package name="test">
@@ -48,18 +52,18 @@
       <file name="domManipulators.ts" path="/Users/ivan/websites/tdd_react/test/domManipulators.ts">
         <metrics statements="16" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="15" coveredmethods="10"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="35" type="stmt"/>
-        <line num="6" count="35" type="stmt"/>
-        <line num="8" count="35" type="stmt"/>
-        <line num="9" count="35" type="stmt"/>
-        <line num="10" count="35" type="stmt"/>
-        <line num="12" count="105" type="stmt"/>
+        <line num="5" count="36" type="stmt"/>
+        <line num="6" count="36" type="stmt"/>
+        <line num="8" count="36" type="stmt"/>
+        <line num="9" count="36" type="stmt"/>
+        <line num="10" count="36" type="stmt"/>
+        <line num="12" count="108" type="stmt"/>
         <line num="13" count="7" type="stmt"/>
-        <line num="15" count="35" type="stmt"/>
-        <line num="16" count="10" type="stmt"/>
-        <line num="18" count="35" type="stmt"/>
-        <line num="20" count="35" type="stmt"/>
-        <line num="21" count="35" type="stmt"/>
+        <line num="15" count="36" type="stmt"/>
+        <line num="16" count="11" type="stmt"/>
+        <line num="18" count="36" type="stmt"/>
+        <line num="20" count="36" type="stmt"/>
+        <line num="21" count="36" type="stmt"/>
         <line num="23" count="0" type="stmt"/>
         <line num="35" count="1" type="stmt"/>
         <line num="36" count="7" type="stmt"/>
@@ -67,7 +71,7 @@
       <file name="spyHelpers.ts" path="/Users/ivan/websites/tdd_react/test/spyHelpers.ts">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
         <line num="1" count="1" type="stmt"/>
-        <line num="2" count="36" type="stmt"/>
+        <line num="2" count="37" type="stmt"/>
         <line num="4" count="6" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="4" type="stmt"/>
