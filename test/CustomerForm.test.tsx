@@ -1,4 +1,5 @@
 import React from "react";
+import ReactTestUtils, { act } from "react-dom/test-utils";
 import "whatwg-fetch";
 import { CustomerForm } from "../src/CustomerForm";
 import { createContainer, withEvent } from "./domManipulators";
@@ -11,7 +12,7 @@ describe("CustomerForm", () => {
   };
   let render, container, element, change, submit, blur;
   const form = (id) => container.querySelector(`form[id="${id}"]`);
-  // const field = (name) => form("customer").elements[name];
+
   const field = (formId, name) => form(formId).elements[name];
   const labelFor = (formElement) => container.querySelector(`label[for="${formElement}"]`);
   let fetchSpy;
@@ -58,14 +59,14 @@ describe("CustomerForm", () => {
     });
   };
 
-  const itSubmitsExistingValue = (fieldName) =>
+  const itSubmitsExistingValue = (fieldName, value) =>
     it("saves existing value when submitted", async () => {
-      render(<CustomerForm {...validCustomer} {...{ [fieldName]: "value" }} />);
+      render(<CustomerForm {...validCustomer} />);
 
       submit(form("customer"));
 
       expect(fetchRequestOfBody(fetchSpy)).toMatchObject({
-        [fieldName]: "value",
+        [fieldName]: value,
       });
     });
 
@@ -115,7 +116,7 @@ describe("CustomerForm", () => {
 
     itRendersALabel("firstName", "First name");
 
-    itSubmitsExistingValue("firstName");
+    itSubmitsExistingValue("firstName", "first");
 
     itSubmitsNewValue("firstName");
     itInvalidatesFieldWithValue("firstName", " ", "First name is required");
@@ -133,7 +134,7 @@ describe("CustomerForm", () => {
 
     itRendersALabel("lastName", "Last name");
 
-    itSubmitsExistingValue("lastName");
+    itSubmitsExistingValue("lastName", "last");
 
     itInvalidatesFieldWithValue("lastName", " ", "Last name is required");
   });
@@ -150,7 +151,7 @@ describe("CustomerForm", () => {
 
     itRendersALabel("phoneNumber", "Phone number");
 
-    itSubmitsExistingValue("phoneNumber");
+    itSubmitsExistingValue("phoneNumber", "123456789");
 
     itInvalidatesFieldWithValue("phoneNumber", " ", "Phone number is required");
     itInvalidatesFieldWithValue(
@@ -233,5 +234,32 @@ describe("CustomerForm", () => {
     await submit(form("customer"));
     expect(window.fetch).not.toHaveBeenCalled();
     expect(element(".error")).not.toBeNull();
+  });
+  it("renders field validation errors from server", async () => {
+    const errors = {
+      phoneNumber: "Phone number already exists in the system",
+    };
+    window.fetch.mockReturnValue(fetchResponseError(422, { errors }));
+    render(<CustomerForm {...validCustomer} />);
+    await submit(form("customer"));
+    expect(element(".error").textContent).toMatch(errors.phoneNumber);
+  });
+  it("displays indicator when form is submitting", async () => {
+    render(<CustomerForm {...validCustomer} />);
+    act(() => {
+      ReactTestUtils.Simulate.submit(form("customer"));
+    });
+    await act(async () => {
+      expect(element("span.submittingIndicator")).not.toBeNull();
+    });
+  });
+  it("initially does not display the submitting indicator", () => {
+    render(<CustomerForm {...validCustomer} />);
+    expect(element(".submittingIndicator")).toBeNull();
+  });
+  it("hides indicator when form has submitted", async () => {
+    render(<CustomerForm {...validCustomer} />);
+    await submit(form("customer"));
+    expect(element(".submittingIndicator")).toBeNull();
   });
 });
