@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">84.21% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>15/15</span>
+                <span class='fraction'>16/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>4/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">82.35% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>13/13</span>
+                <span class='fraction'>14/17</span>
             </div>
         
             
@@ -97,7 +97,17 @@
 <a name='L32'></a><a href='#L32'>32</a>
 <a name='L33'></a><a href='#L33'>33</a>
 <a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a>
+<a name='L39'></a><a href='#L39'>39</a>
+<a name='L40'></a><a href='#L40'>40</a>
+<a name='L41'></a><a href='#L41'>41</a>
+<a name='L42'></a><a href='#L42'>42</a>
+<a name='L43'></a><a href='#L43'>43</a>
+<a name='L44'></a><a href='#L44'>44</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -111,6 +121,12 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-yes">22x</span>
@@ -118,6 +134,8 @@
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -135,6 +153,7 @@
 import { AppointmentFormLoader } from "./AppointmentFormLoader";
 import { AppointmentsDayViewLoader } from "./AppointmentsDayViewLoader";
 import { CustomerForm } from "./CustomerForm";
+import { CustomerSearch } from "./CustomerSearch";
 &nbsp;
 export const App = () =&gt; {
   const [view, setView] = useState("dayView");
@@ -145,13 +164,21 @@ export const App = () =&gt; {
     setView("addAppointment");
   }, []);
   const transitionToDayView = useCallback(() =&gt; setView("dayView"), []);
-&nbsp;
+  const searchActions = <span class="fstat-no" title="function not covered" >(c</span>ustomer) =&gt; (
+<span class="cstat-no" title="statement not covered" >    &lt;React.Fragment&gt;</span>
+      &lt;button role="button" onClick={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >transitionToAddAppointment(customer)}</span>&gt;
+        Create appointment
+      &lt;/button&gt;
+    &lt;/React.Fragment&gt;
+  );
   const today = new Date();
   switch (view) {
     case "addCustomer":
       return &lt;CustomerForm onSave={transitionToAddAppointment} /&gt;;
     case "addAppointment":
       return &lt;AppointmentFormLoader customer={customer} onSave={transitionToDayView} /&gt;;
+<span class="branch-2 cbranch-no" title="branch not covered" >    case "searchCustomers":</span>
+<span class="cstat-no" title="statement not covered" >      return &lt;CustomerSearch renderCustomerActions={searchActions} /&gt;;</span>
     default:
       return (
         &lt;React.Fragment&gt;
@@ -172,7 +199,7 @@ export const App = () =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener">istanbul</a>
-                at Thu Jan 13 2022 22:58:07 GMT+0300 (Moscow Standard Time)
+                at Mon Jan 17 2022 16:49:20 GMT+0300 (Moscow Standard Time)
             </div>
         </div>
         <script src="../prettify.js"></script>

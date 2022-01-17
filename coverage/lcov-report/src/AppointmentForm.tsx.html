@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/8</span>
+                <span class='fraction'>2/8</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">85.71% </span>
+                <span class="strong">28.57% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/7</span>
+                <span class='fraction'>2/7</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -130,11 +130,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -143,13 +143,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">64x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -174,7 +174,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { default as React, useCallback, useState } from "react";
 import { TimeSlotTable } from "./TimeSlotTable";
 &nbsp;
-export const AppointmentForm = ({
+export const AppointmentForm = <span class="fstat-no" title="function not covered" >({</span>
   selectableServices,
   service,
   salonOpensAt,
@@ -184,11 +184,11 @@ export const AppointmentForm = ({
   startsAt,
   customer,
 }) =&gt; {
-  const [appointment, setAppointment] = useState({
+  const [appointment, setAppointment] = <span class="cstat-no" title="statement not covered" >useState({</span>
     service,
     startsAt,
   });
-  const handleStartsAtChange = useCallback(
+  const handleStartsAtChange = <span class="cstat-no" title="statement not covered" >useCallback(</span>
 <span class="fstat-no" title="function not covered" >    ({</span> target: { value } }) =&gt;
 <span class="cstat-no" title="statement not covered" >      setAppointment(<span class="fstat-no" title="function not covered" >(a</span>ppointment) =&gt; (<span class="cstat-no" title="statement not covered" >{</span></span>
         ...appointment,
@@ -197,13 +197,13 @@ export const AppointmentForm = ({
       })),
     []
   );
-  return (
+<span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;form id="appointment"&gt;
       &lt;label htmlFor="service"&gt;Salon service&lt;/label&gt;
       &lt;select name="service" defaultValue={service}&gt;
         &lt;option /&gt;
-        {selectableServices.map((s) =&gt; (
-          &lt;option key={s}&gt;{s}&lt;/option&gt;
+        {selectableServices.map(<span class="fstat-no" title="function not covered" >(s</span>) =&gt; (
+<span class="cstat-no" title="statement not covered" >          &lt;option key={s}&gt;{s}&lt;/option&gt;</span>
         ))}
       &lt;/select&gt;
       &lt;TimeSlotTable
@@ -232,7 +232,7 @@ AppointmentForm.defaultProps = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener">istanbul</a>
-                at Thu Jan 13 2022 22:58:07 GMT+0300 (Moscow Standard Time)
+                at Mon Jan 17 2022 16:49:20 GMT+0300 (Moscow Standard Time)
             </div>
         </div>
         <script src="../prettify.js"></script>

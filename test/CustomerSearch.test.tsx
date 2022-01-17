@@ -1,10 +1,12 @@
 import { default as React } from "react";
 import "whatwg-fetch";
+import { AppointmentFormLoader } from "../src/AppointmentFormLoader";
 import { CustomerSearch } from "../src/CustomerSearch";
-import { createContainer } from "./domManipulators";
+import { createContainer, withEvent } from "./domManipulators";
+import { childrenOf, click, createShallowRenderer, type } from "./shallowHelpers";
 import { fetchResponseOk } from "./spyHelpers";
 describe("Customer search", () => {
-  let renderAndWait, element, elements, clickAndWait;
+  let renderAndWait, element, elements, clickAndWait, changeAndWait, render, elementMatching, elementsMatching;
   let fetchSpy;
   const oneCustomer = [{ id: 1, firstName: "A", lastName: "B", phoneNumber: "1" }];
   const twoCustomers = [
@@ -14,7 +16,10 @@ describe("Customer search", () => {
   const tenCustomers = Array.from("0123456789", (id) => ({ id }));
   const anotherTenCustomers = Array.from("ABCDEFGHIJ", (id) => ({ id }));
   beforeEach(() => {
-    ({ renderAndWait, element, elements, clickAndWait } = createContainer());
+    ({ renderAndWait, element, elements, clickAndWait, changeAndWait } = createContainer());
+
+    ({ render, elementMatching, elementsMatching } = createShallowRenderer());
+
     fetchSpy = jest.fn(() => fetchResponseOk({}));
     window.fetch = fetchSpy;
     jest.spyOn(window, "fetch").mockReturnValue(fetchResponseOk({}));
@@ -111,5 +116,47 @@ describe("Customer search", () => {
       await clickAndWait(element("button#previous-page"));
       expect(window.fetch).toHaveBeenLastCalledWith("/customers", expect.anything());
     });
+  });
+  describe("Search", () => {
+    it("has a search input field with a placeholder", async () => {
+      await renderAndWait(<CustomerSearch />);
+      expect(element("input")).not.toBeNull();
+      expect(element("input").getAttribute("placeholder")).toEqual("Enter filter text");
+    });
+    it("performs search when search term is changed", async () => {
+      await renderAndWait(<CustomerSearch />);
+      await changeAndWait(element("input"), withEvent("input", "name"));
+      expect(window.fetch).toHaveBeenLastCalledWith("/customers?searchTerm=name", expect.anything());
+    });
+    it("includes search term when moving to next page", async () => {
+      window.fetch.mockReturnValue(fetchResponseOk(tenCustomers));
+
+      await renderAndWait(<CustomerSearch />);
+      await changeAndWait(element("input"), withEvent("input", "name"));
+      await clickAndWait(element("button#next-page"));
+      expect(window.fetch).toHaveBeenLastCalledWith("/customers?after=9&searchTerm=name", expect.anything());
+    });
+  });
+  it("displays provided action buttons for each customer", async () => {
+    const actionSpy = jest.fn();
+    actionSpy.mockReturnValue("actions");
+    window.fetch.mockReturnValue(fetchResponseOk(oneCustomer));
+    await renderAndWait(<CustomerSearch renderCustomerActions={actionSpy} />);
+    const rows = elements("table tbody td");
+    expect(rows[rows.length - 1].textContent).toEqual("actions");
+  });
+  it("passes customer to the renderCustomerActions prop", async () => {
+    const actionSpy = jest.fn();
+    actionSpy.mockReturnValue("actions");
+    window.fetch.mockReturnValue(fetchResponseOk(oneCustomer));
+    await renderAndWait(<CustomerSearch renderCustomerActions={actionSpy} />);
+    expect(actionSpy).toHaveBeenCalledWith(oneCustomer[0]);
+  });
+  it("clicking appointment button shows the appointment form for that customer", async () => {
+    const customer = { id: 123 };
+    const button = childrenOf(renderSearchActionsForCustomer(customer))[0];
+    click(button);
+    expect(elementMatching(type(AppointmentFormLoader))).not.toBeNull();
+    expect(elementMatching(type(AppointmentFormLoader)).props.customer).toBe(customer);
   });
 });

@@ -3,6 +3,7 @@ import { App } from "../src/App";
 import { AppointmentFormLoader } from "../src/AppointmentFormLoader";
 import { AppointmentsDayViewLoader } from "../src/AppointmentsDayViewLoader";
 import { CustomerForm } from "../src/CustomerForm";
+import { CustomerSearch } from "../src/CustomerSearch";
 import { childrenOf, className, click, createShallowRenderer, id, type } from "./shallowHelpers";
 
 describe("App", () => {
@@ -61,5 +62,18 @@ describe("App", () => {
     saveCustomer();
     saveAppointment();
     expect(elementMatching(type(AppointmentsDayViewLoader))).toBeDefined();
+  });
+  const renderSearchActionsForCustomer = (customer) => {
+    const customerSearch = elementMatching(type(CustomerSearch));
+    const searchActionsComponent = customerSearch.props.renderCustomerActions;
+    return searchActionsComponent(customer);
+  };
+  it("passes a button to the CustomerSearch named Create appointment", async () => {
+    const customer = { id: 123 };
+    const button = childrenOf(renderSearchActionsForCustomer(customer))[0];
+    expect(button).toBeDefined();
+    expect(button.type).toEqual("button");
+    expect(button.props.role).toEqual("button");
+    expect(button.props.children).toEqual("Create appointment");
   });
 });

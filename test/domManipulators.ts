@@ -13,8 +13,9 @@ export const createContainer = () => {
   const simulateEvent = (eventName) => (element, eventData) => {
     ReactTestUtils.Simulate[eventName](element, eventData);
   };
-  const simulateEventAndWait = (eventName) => async (element, eventData) =>
+  const simulateEventAndWait = (eventName) => async (element, eventData) => {
     await act(async () => ReactTestUtils.Simulate[eventName](element, eventData));
+  };
 
   return {
     render: (component) =>
@@ -33,6 +34,7 @@ export const createContainer = () => {
     submit: simulateEventAndWait("submit"),
     blur: simulateEvent("blur"),
     clickAndWait: simulateEventAndWait("click"),
+    changeAndWait: simulateEvent("change"),
   };
 };
 export const withEvent = (name, value) => {

@@ -1,7 +1,6 @@
 import React from "react";
 import "whatwg-fetch";
 import * as AppointmentFormExports from "../src/AppointmentForm";
-import { AppointmentForm } from "../src/AppointmentForm";
 import { AppointmentFormLoader } from "../src/AppointmentFormLoader";
 import { createContainer } from "./domManipulators";
 import { fetchRequestOfBody, fetchResponseOk } from "./spyHelpers";
@@ -54,7 +53,7 @@ describe("AppointmentFormLoader", () => {
   });
   it("passes the customer id to fetch when submitting", async () => {
     const customer = { id: 123 };
-    render(<AppointmentForm customer={customer} />);
+    renderAndWait(<AppointmentForm {...customer} />);
     await submit(form("appointment"));
     expect(fetchRequestOfBody(window.fetch)).toMatchObject({
       customer: customer.id,

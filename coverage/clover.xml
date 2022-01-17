@@ -1,36 +1,201 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1642363862199" clover="3.2.0">
-  <project timestamp="1642363862199" name="All files">
-    <metrics statements="24" coveredstatements="18" conditionals="2" coveredconditionals="0" methods="21" coveredmethods="11" elements="47" coveredelements="29" complexity="0" loc="24" ncloc="24" packages="1" files="2" classes="2"/>
-    <file name="domManipulators.ts" path="/Users/ivan/websites/tdd_react/test/domManipulators.ts">
-      <metrics statements="17" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="16" coveredmethods="9"/>
-      <line num="4" count="1" type="stmt"/>
-      <line num="5" count="11" type="stmt"/>
-      <line num="6" count="11" type="stmt"/>
-      <line num="8" count="11" type="stmt"/>
-      <line num="9" count="11" type="stmt"/>
-      <line num="10" count="13" type="stmt"/>
-      <line num="11" count="11" type="stmt"/>
-      <line num="13" count="33" type="stmt"/>
-      <line num="14" count="0" type="stmt"/>
-      <line num="16" count="22" type="stmt"/>
-      <line num="17" count="11" type="stmt"/>
-      <line num="19" count="11" type="stmt"/>
-      <line num="21" count="0" type="stmt"/>
-      <line num="22" count="0" type="stmt"/>
-      <line num="24" count="11" type="stmt"/>
-      <line num="38" count="1" type="stmt"/>
-      <line num="39" count="0" type="stmt"/>
-    </file>
-    <file name="spyHelpers.ts" path="/Users/ivan/websites/tdd_react/test/spyHelpers.ts">
-      <metrics statements="7" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="2"/>
-      <line num="1" count="1" type="stmt"/>
-      <line num="2" count="21" type="stmt"/>
-      <line num="4" count="22" type="stmt"/>
-      <line num="6" count="1" type="cond" truecount="0" falsecount="2"/>
-      <line num="7" count="0" type="stmt"/>
-      <line num="10" count="0" type="stmt"/>
-      <line num="12" count="1" type="stmt"/>
-    </file>
+<coverage generated="1642427360823" clover="3.2.0">
+  <project timestamp="1642427360823" name="All files">
+    <metrics statements="162" coveredstatements="109" conditionals="40" coveredconditionals="25" methods="75" coveredmethods="45" elements="277" coveredelements="179" complexity="0" loc="162" ncloc="162" packages="2" files="9" classes="9"/>
+    <package name="src">
+      <metrics statements="110" coveredstatements="63" conditionals="26" coveredconditionals="13" methods="36" coveredmethods="18"/>
+      <file name="App.tsx" path="/Users/ivan/websites/tdd_react/src/App.tsx">
+        <metrics statements="17" coveredstatements="14" conditionals="4" coveredconditionals="3" methods="6" coveredmethods="4"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="22" type="stmt"/>
+        <line num="9" count="22" type="stmt"/>
+        <line num="10" count="22" type="stmt"/>
+        <line num="11" count="22" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="15" count="22" type="stmt"/>
+        <line num="16" count="22" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="23" count="22" type="stmt"/>
+        <line num="24" count="22" type="cond" truecount="3" falsecount="1"/>
+        <line num="26" count="9" type="stmt"/>
+        <line num="28" count="3" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="32" count="10" type="stmt"/>
+      </file>
+      <file name="AppointmentForm.tsx" path="/Users/ivan/websites/tdd_react/src/AppointmentForm.tsx">
+        <metrics statements="7" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="48" count="3" type="stmt"/>
+      </file>
+      <file name="AppointmentFormLoader.tsx" path="/Users/ivan/websites/tdd_react/src/AppointmentFormLoader.tsx">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="5" count="8" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="12" count="4" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="17" count="8" type="stmt"/>
+      </file>
+      <file name="AppointmentsDayViewLoader.tsx" path="/Users/ivan/websites/tdd_react/src/AppointmentsDayViewLoader.tsx">
+        <metrics statements="11" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+      </file>
+      <file name="CustomerForm.tsx" path="/Users/ivan/websites/tdd_react/src/CustomerForm.tsx">
+        <metrics statements="32" coveredstatements="2" conditionals="12" coveredconditionals="0" methods="8" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="57" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="94" count="1" type="stmt"/>
+      </file>
+      <file name="CustomerSearch.tsx" path="/Users/ivan/websites/tdd_react/src/CustomerSearch.tsx">
+        <metrics statements="35" coveredstatements="35" conditionals="10" coveredconditionals="10" methods="12" coveredmethods="11"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="30" type="stmt"/>
+        <line num="4" count="30" type="cond" truecount="2" falsecount="0"/>
+        <line num="5" count="10" type="stmt"/>
+        <line num="7" count="30" type="cond" truecount="2" falsecount="0"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="10" count="30" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="13" count="18" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="59" type="stmt"/>
+        <line num="17" count="59" type="stmt"/>
+        <line num="18" count="59" type="stmt"/>
+        <line num="19" count="59" type="stmt"/>
+        <line num="20" count="59" type="stmt"/>
+        <line num="22" count="59" type="stmt"/>
+        <line num="23" count="30" type="stmt"/>
+        <line num="25" count="30" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="30" type="stmt"/>
+        <line num="27" count="30" type="stmt"/>
+        <line num="32" count="30" type="stmt"/>
+        <line num="34" count="30" type="stmt"/>
+        <line num="37" count="59" type="stmt"/>
+        <line num="38" count="8" type="stmt"/>
+        <line num="40" count="8" type="stmt"/>
+        <line num="43" count="59" type="stmt"/>
+        <line num="44" count="4" type="stmt"/>
+        <line num="46" count="59" type="stmt"/>
+        <line num="47" count="226" type="stmt"/>
+        <line num="54" count="59" type="stmt"/>
+        <line num="55" count="50" type="stmt"/>
+        <line num="65" count="59" type="stmt"/>
+        <line num="67" count="59" type="stmt"/>
+        <line num="84" count="316" type="stmt"/>
+        <line num="92" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="test">
+      <metrics statements="52" coveredstatements="46" conditionals="14" coveredconditionals="12" methods="39" coveredmethods="27"/>
+      <file name="domManipulators.ts" path="/Users/ivan/websites/tdd_react/test/domManipulators.ts">
+        <metrics statements="17" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="16" coveredmethods="11"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="22" type="stmt"/>
+        <line num="6" count="22" type="stmt"/>
+        <line num="8" count="22" type="stmt"/>
+        <line num="9" count="22" type="stmt"/>
+        <line num="10" count="22" type="stmt"/>
+        <line num="11" count="22" type="stmt"/>
+        <line num="13" count="88" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="16" count="44" type="stmt"/>
+        <line num="17" count="12" type="stmt"/>
+        <line num="20" count="22" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="25" count="20" type="stmt"/>
+        <line num="40" count="2" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
+      </file>
+      <file name="shallowHelpers.tsx" path="/Users/ivan/websites/tdd_react/test/shallowHelpers.tsx">
+        <metrics statements="28" coveredstatements="26" conditionals="12" coveredconditionals="12" methods="18" coveredmethods="14"/>
+        <line num="3" count="24" type="cond" truecount="2" falsecount="0"/>
+        <line num="4" count="19" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="9" count="6" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="32" type="cond" truecount="2" falsecount="0"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="17" count="30" type="stmt"/>
+        <line num="18" count="30" type="cond" truecount="2" falsecount="0"/>
+        <line num="19" count="8" type="stmt"/>
+        <line num="21" count="22" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="24" count="20" type="cond" truecount="2" falsecount="0"/>
+        <line num="25" count="11" type="stmt"/>
+        <line num="27" count="9" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="31" count="46" type="cond" truecount="2" falsecount="0"/>
+        <line num="32" count="16" type="stmt"/>
+        <line num="34" count="29" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="38" count="27" type="stmt"/>
+        <line num="40" count="27" type="stmt"/>
+        <line num="41" count="9" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="43" count="18" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
+      </file>
+      <file name="spyHelpers.ts" path="/Users/ivan/websites/tdd_react/test/spyHelpers.ts">
+        <metrics statements="7" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="2"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="35" type="stmt"/>
+        <line num="4" count="34" type="stmt"/>
+        <line num="6" count="2" type="cond" truecount="0" falsecount="2"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>

@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import { AppointmentFormLoader } from "./AppointmentFormLoader";
 import { AppointmentsDayViewLoader } from "./AppointmentsDayViewLoader";
 import { CustomerForm } from "./CustomerForm";
+import { CustomerSearch } from "./CustomerSearch";
 
 export const App = () => {
   const [view, setView] = useState("dayView");
@@ -12,13 +13,21 @@ export const App = () => {
     setView("addAppointment");
   }, []);
   const transitionToDayView = useCallback(() => setView("dayView"), []);
-
+  const searchActions = (customer) => (
+    <React.Fragment>
+      <button role="button" onClick={() => transitionToAddAppointment(customer)}>
+        Create appointment
+      </button>
+    </React.Fragment>
+  );
   const today = new Date();
   switch (view) {
     case "addCustomer":
       return <CustomerForm onSave={transitionToAddAppointment} />;
     case "addAppointment":
       return <AppointmentFormLoader customer={customer} onSave={transitionToDayView} />;
+    case "searchCustomers":
+      return <CustomerSearch renderCustomerActions={searchActions} />;
     default:
       return (
         <React.Fragment>
