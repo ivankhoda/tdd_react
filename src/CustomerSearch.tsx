@@ -36,13 +36,13 @@ export const CustomerSearch = ({ renderCustomerActions }) => {
 
   const handleNext = useCallback(() => {
     const after = customers[customers.length - 1].id;
-
     setLastRowsIds([...lastRowsIds, after]);
   }, [customers, lastRowsIds]);
 
   const handlePrevious = useCallback(() => {
     setLastRowsIds(lastRowsIds.slice(0, -1));
   }, [lastRowsIds]);
+
   const CustomerRow = ({ customer, renderCustomerActions }) => (
     <tr>
       <td>{customer.firstName}</td>

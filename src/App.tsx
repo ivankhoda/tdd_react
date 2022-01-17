@@ -22,12 +22,13 @@ export const App = () => {
   );
   const today = new Date();
   switch (view) {
+    case "searchCustomers":
+      return <CustomerSearch renderCustomerActions={searchActions} />;
     case "addCustomer":
       return <CustomerForm onSave={transitionToAddAppointment} />;
     case "addAppointment":
       return <AppointmentFormLoader customer={customer} onSave={transitionToDayView} />;
-    case "searchCustomers":
-      return <CustomerSearch renderCustomerActions={searchActions} />;
+
     default:
       return (
         <React.Fragment>
