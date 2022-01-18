@@ -20,6 +20,10 @@ export const App = () => {
       </button>
     </React.Fragment>
   );
+
+
+
+  
   const today = new Date();
   switch (view) {
     case "searchCustomers":
