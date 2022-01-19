@@ -17,6 +17,7 @@ const config: Config.InitialOptions = {
   moduleNameMapper: {
     "\\.(s?css|less)$": "identity-obj-proxy",
   },
+  testPathIgnorePatterns: ["/server/", "/node_modules"],
 };
 
 export default config;

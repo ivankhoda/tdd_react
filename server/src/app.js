@@ -6,7 +6,7 @@ import { Appointments } from "./appointments";
 import { Customers } from "./customers";
 
 const expressGraphQL = require("express-graphql").graphqlHTTP;
-
+//const { graphqlHTTP } = require("express-graphql");
 const schema = buildSchema(schemaText);
 
 export function buildApp(customerData, appointmentData, timeSlots) {
@@ -87,28 +87,27 @@ export function buildApp(customerData, appointmentData, timeSlots) {
     "/graphql",
     expressGraphQL({
       schema: schema,
-      // rootValue:
-      // {
-      //   customer: ({ id }) => {
-      //     const customer = customers.all()[id];
-      //     return { ...customer, appointments: appointments.forCustomer(customer.id) };
-      //   },
-      //   customers: (query) =>
-      //     customers
-      //       .search(buildSearchParams(query))
-      //       .map((customer) => ({ ...customer, appointments: () => appointments.forCustomer(customer.id) })),
-      //   availableTimeSlots: () => appointments.getTimeSlots(),
-      //   appointments: ({ from, to }) => {
-      //     return appointments.getAppointments(parseInt(from), parseInt(to), customers.all());
-      //   },
-      //   addAppointment: ({ appointment }) => {
-      //     appointment = Object.assign(appointment, { startsAt: parseInt(appointment.startsAt) });
-      //     return appointments.add(appointment);
-      //   },
-      //   addCustomer: ({ customer }) => customers.add(customer),
-      // },
+      rootValue: {
+        customer: ({ id }) => {
+          const customer = customers.all()[id];
+          return { ...customer, appointments: appointments.forCustomer(customer.id) };
+        },
+        customers: (query) =>
+          customers
+            .search(buildSearchParams(query))
+            .map((customer) => ({ ...customer, appointments: () => appointments.forCustomer(customer.id) })),
+        availableTimeSlots: () => appointments.getTimeSlots(),
+        appointments: ({ from, to }) => {
+          return appointments.getAppointments(parseInt(from), parseInt(to), customers.all());
+        },
+        addAppointment: ({ appointment }) => {
+          appointment = Object.assign(appointment, { startsAt: parseInt(appointment.startsAt) });
+          return appointments.add(appointment);
+        },
+        addCustomer: ({ customer }) => customers.add(customer),
+      },
       validationRules: [customerValidation, appointmentValidation],
-      graphiql: true,
+      graphql: true,
     })
   );
 
