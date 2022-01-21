@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1642575450009" clover="3.2.0">
-  <project timestamp="1642575450009" name="All files">
-    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
+<coverage generated="1642750272468" clover="3.2.0">
+  <project timestamp="1642750272468" name="All files">
+    <metrics statements="35" coveredstatements="35" conditionals="10" coveredconditionals="10" methods="12" coveredmethods="11" elements="57" coveredelements="56" complexity="0" loc="35" ncloc="35" packages="1" files="1" classes="1"/>
+    <file name="CustomerSearch.tsx" path="/Users/ivan/websites/tdd_react/src/CustomerSearch/CustomerSearch.tsx">
+      <metrics statements="35" coveredstatements="35" conditionals="10" coveredconditionals="10" methods="12" coveredmethods="11"/>
+      <line num="2" count="2" type="stmt"/>
+      <line num="3" count="30" type="stmt"/>
+      <line num="4" count="30" type="cond" truecount="2" falsecount="0"/>
+      <line num="5" count="10" type="stmt"/>
+      <line num="7" count="30" type="cond" truecount="2" falsecount="0"/>
+      <line num="8" count="3" type="stmt"/>
+      <line num="10" count="30" type="cond" truecount="2" falsecount="0"/>
+      <line num="11" count="12" type="stmt"/>
+      <line num="13" count="18" type="stmt"/>
+      <line num="15" count="2" type="stmt"/>
+      <line num="16" count="59" type="stmt"/>
+      <line num="17" count="59" type="stmt"/>
+      <line num="18" count="59" type="stmt"/>
+      <line num="19" count="59" type="stmt"/>
+      <line num="20" count="59" type="stmt"/>
+      <line num="22" count="59" type="stmt"/>
+      <line num="23" count="30" type="stmt"/>
+      <line num="25" count="30" type="cond" truecount="2" falsecount="0"/>
+      <line num="26" count="30" type="stmt"/>
+      <line num="27" count="30" type="stmt"/>
+      <line num="32" count="30" type="stmt"/>
+      <line num="34" count="30" type="stmt"/>
+      <line num="37" count="59" type="stmt"/>
+      <line num="38" count="8" type="stmt"/>
+      <line num="39" count="8" type="stmt"/>
+      <line num="42" count="59" type="stmt"/>
+      <line num="43" count="4" type="stmt"/>
+      <line num="46" count="59" type="stmt"/>
+      <line num="47" count="226" type="stmt"/>
+      <line num="54" count="59" type="stmt"/>
+      <line num="55" count="50" type="stmt"/>
+      <line num="65" count="59" type="stmt"/>
+      <line num="67" count="59" type="stmt"/>
+      <line num="84" count="316" type="stmt"/>
+      <line num="92" count="2" type="stmt"/>
+    </file>
   </project>
 </coverage>

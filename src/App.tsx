@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AppointmentFormLoader } from "./AppointmentFormLoader";
 import { AppointmentsDayViewLoader } from "./AppointmentsDayViewLoader";
 import { CustomerForm } from "./CustomerForm";
-import { CustomerSearch } from "./CustomerSearch";
+import { CustomerSearch } from "./CustomerSearch/CustomerSearch";
 export const MainScreen = () => (
   <React.Fragment>
     <div className="button-bar">

@@ -3,7 +3,7 @@ import { App } from "../src/App";
 import { AppointmentFormLoader } from "../src/AppointmentFormLoader";
 import { AppointmentsDayViewLoader } from "../src/AppointmentsDayViewLoader";
 import { CustomerForm } from "../src/CustomerForm";
-import { CustomerSearch } from "../src/CustomerSearch";
+import { CustomerSearch } from "../src/CustomerSearch/CustomerSearch";
 import { childrenOf, className, click, createShallowRenderer, id, type } from "./shallowHelpers";
 
 describe("App", () => {

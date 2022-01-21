@@ -1,7 +1,7 @@
 import { default as React } from "react";
 import "whatwg-fetch";
 import { CustomerForm } from "../src/CustomerForm";
-import { CustomerSearch } from "../src/CustomerSearch";
+import { CustomerSearch } from "../src/CustomerSearch/CustomerSearch";
 import { createContainer, withEvent } from "./domManipulators";
 import { createShallowRenderer, type } from "./shallowHelpers";
 import { fetchResponseOk } from "./spyHelpers";
@@ -160,12 +160,4 @@ describe("Customer search", () => {
     await renderAndWait(<CustomerSearch renderCustomerActions={actionSpy} />);
     expect(actionSpy).toHaveBeenCalledWith(oneCustomer[0]);
   });
-  // it("clicking appointment button shows the appointment form for that цcustomer", async () => {
-  //   const customer = { id: 123 };
-  //   const button = childrenOf(renderSearchActionsForCustomer(customer))[0];
-
-  //   click(button);
-  //   expect(elementMatching(type(AppointmentFormLoader))).not.toBeNull();
-  //   expect(elementMatching(type(AppointmentFormLoader)).props.customer).toBe(customer);
-  // });
 });
