@@ -1,28 +1,44 @@
 import { default as React, useState } from "react";
+import { connect } from "react-redux";
 import { anyErrors, hasError, list, match, required, validateMany } from "./formValidation";
-export const CustomerForm = ({ firstName, lastName, phoneNumber, onSave }) => {
+const mapStateToProps = ({ customer: { validationErrors, error, status } }) => ({
+  serverValidationErrors: validationErrors,
+  error,
+  status,
+});
+const mapDispatchToProps = {
+  addCustomerRequest: (customer) => ({
+    type: "ADD_CUSTOMER_REQUEST",
+    customer,
+  }),
+};
+
+export const CustomerForm = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(({ firstName, lastName, phoneNumber, onSave, addCustomerRequest, error, serverValidationErrors, status }) => {
   const [customer, setCustomer] = useState({ firstName, lastName, phoneNumber });
-  const [error, setError] = useState(false);
   const [validationErrors, setValidationErrors] = useState({});
-  const [submitting, setSubmitting] = useState(false);
+
   const handleChange = ({ target }) => {
     setCustomer((customer) => ({
       ...customer,
       [target.name]: target.value,
     }));
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const validationResult = validateMany(validators, customer);
     if (!anyErrors(validationResult)) {
-      setSubmitting(true);
+      addCustomerRequest(customer);
       const result = await window.fetch("/customers", {
         method: "POST",
         body: JSON.stringify(customer),
         credentials: "same-origin",
         headers: { "Content-Type": "application/json" },
       });
-      setSubmitting(false);
+
       if (result.ok) {
         const customerWithId = await result.json();
         onSave(customerWithId);
@@ -30,13 +46,12 @@ export const CustomerForm = ({ firstName, lastName, phoneNumber, onSave }) => {
         const response = await result.json();
         setValidationErrors(response.errors);
       } else {
-        setError(true);
       }
     } else {
       setValidationErrors(validationResult);
     }
   };
-
+  const submitting = status === "SUBMITTING";
   const validators = {
     firstName: required("First name is required"),
     lastName: required("Last name is required"),
@@ -54,8 +69,12 @@ export const CustomerForm = ({ firstName, lastName, phoneNumber, onSave }) => {
   };
 
   const renderError = (fieldName) => {
-    if (hasError(validationErrors, fieldName)) {
-      return <span className="error">{validationErrors[fieldName]} </span>;
+    const allValidationErrors = {
+      ...validationErrors,
+      ...serverValidationErrors,
+    };
+    if (hasError(allValidationErrors, fieldName)) {
+      return <span className="error">{allValidationErrors[fieldName]} </span>;
     }
   };
   const Error = () => <div className="error">An error occurred during save.</div>;
@@ -90,7 +109,7 @@ export const CustomerForm = ({ firstName, lastName, phoneNumber, onSave }) => {
       {submitting ? <span className="submittingIndicator" /> : null}
     </form>
   );
-};
+});
 CustomerForm.defaultProps = {
   onSave: () => {},
 };

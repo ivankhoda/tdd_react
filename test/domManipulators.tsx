@@ -1,6 +1,9 @@
+import { storeSpy } from "expect-redux";
+import React from "react";
 import ReactDOM from "react-dom";
 import ReactTestUtils, { act } from "react-dom/test-utils";
-
+import { Provider } from "react-redux";
+import { configureStore } from "../src/store";
 export const createContainer = () => {
   const container = document.createElement("div");
   const form = (id) => container.querySelector(`form[id="${id}"]`) as HTMLFormElement;
@@ -40,5 +43,18 @@ export const createContainer = () => {
 export const withEvent = (name, value) => {
   return {
     target: { name, value },
+  };
+};
+export const createContainerWithStore = () => {
+  const store = configureStore([storeSpy]);
+  const container = createContainer();
+  return {
+    ...container,
+    store,
+    renderWithStore: (component) => {
+      act(() => {
+        ReactDOM.render(<Provider store={store}>{component}</Provider>, container.container);
+      });
+    },
   };
 };
