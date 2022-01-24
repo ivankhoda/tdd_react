@@ -75,4 +75,8 @@ describe("App", () => {
   //   expect(button.props.role).toEqual("button");
   //   expect(button.props.children).toEqual("Create appointment");
   // });
+  it("renders CustomerForm at the /addCustomer endpoint", () => {
+    render(<App />);
+    expect(routeFor("/addCustomer").props.component).toEqual(CustomerForm);
+  });
 });

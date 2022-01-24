@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import { AppointmentFormLoader } from "./AppointmentFormLoader";
 import { AppointmentsDayViewLoader } from "./AppointmentsDayViewLoader";
 import { CustomerForm } from "./CustomerForm";
@@ -51,6 +51,8 @@ export const App = () => {
               Add customer and appointment
             </button>
           </div>
+          <Route path="/addCustomer" component={CustomerForm} />
+          <Route path="/addAppointment" render={() => <AppointmentFormLoader onSave={transitionToDayView} />} />
           <AppointmentsDayViewLoader today={today} />
         </React.Fragment>
       );

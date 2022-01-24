@@ -1,6 +1,189 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1642958075882" clover="3.2.0">
-  <project timestamp="1642958075882" name="All files">
-    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
+<coverage generated="1643008247449" clover="3.2.0">
+  <project timestamp="1643008247449" name="All files">
+    <metrics statements="144" coveredstatements="135" conditionals="39" coveredconditionals="36" methods="57" coveredmethods="48" elements="240" coveredelements="219" complexity="0" loc="144" ncloc="144" packages="4" files="9" classes="9"/>
+    <package name="src">
+      <metrics statements="80" coveredstatements="73" conditionals="17" coveredconditionals="14" methods="26" coveredmethods="22"/>
+      <file name="App.tsx" path="/Users/ivan/websites/tdd_react/src/App.tsx">
+        <metrics statements="20" coveredstatements="15" conditionals="4" coveredconditionals="3" methods="8" coveredmethods="4"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="23" type="stmt"/>
+        <line num="22" count="23" type="stmt"/>
+        <line num="23" count="23" type="stmt"/>
+        <line num="24" count="23" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="28" count="23" type="stmt"/>
+        <line num="29" count="23" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="37" count="23" type="stmt"/>
+        <line num="38" count="23" type="cond" truecount="3" falsecount="1"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="42" count="9" type="stmt"/>
+        <line num="44" count="3" type="stmt"/>
+        <line num="47" count="11" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+      </file>
+      <file name="AppointmentFormLoader.tsx" path="/Users/ivan/websites/tdd_react/src/AppointmentFormLoader.tsx">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
+        <line num="5" count="8" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="12" count="4" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="17" count="8" type="stmt"/>
+      </file>
+      <file name="AppointmentsDayViewLoader.tsx" path="/Users/ivan/websites/tdd_react/src/AppointmentsDayViewLoader.tsx">
+        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="12" type="stmt"/>
+        <line num="5" count="12" type="stmt"/>
+        <line num="6" count="12" type="stmt"/>
+        <line num="8" count="12" type="stmt"/>
+        <line num="9" count="6" type="stmt"/>
+        <line num="10" count="6" type="stmt"/>
+        <line num="15" count="6" type="stmt"/>
+        <line num="17" count="6" type="stmt"/>
+        <line num="20" count="12" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+      </file>
+      <file name="CustomerForm.tsx" path="/Users/ivan/websites/tdd_react/src/CustomerForm.tsx">
+        <metrics statements="33" coveredstatements="31" conditionals="12" coveredconditionals="11" methods="10" coveredmethods="10"/>
+        <line num="4" count="66" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="10" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="20" count="75" type="stmt"/>
+        <line num="21" count="75" type="stmt"/>
+        <line num="23" count="75" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="30" count="75" type="stmt"/>
+        <line num="31" count="12" type="stmt"/>
+        <line num="32" count="12" type="stmt"/>
+        <line num="33" count="12" type="cond" truecount="2" falsecount="0"/>
+        <line num="34" count="10" type="stmt"/>
+        <line num="35" count="10" type="stmt"/>
+        <line num="42" count="10" type="cond" truecount="2" falsecount="0"/>
+        <line num="43" count="8" type="stmt"/>
+        <line num="44" count="8" type="stmt"/>
+        <line num="45" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="54" count="75" type="stmt"/>
+        <line num="55" count="75" type="stmt"/>
+        <line num="64" count="75" type="stmt"/>
+        <line num="65" count="6" type="stmt"/>
+        <line num="68" count="6" type="stmt"/>
+        <line num="71" count="75" type="stmt"/>
+        <line num="72" count="225" type="stmt"/>
+        <line num="76" count="225" type="cond" truecount="2" falsecount="0"/>
+        <line num="77" count="11" type="stmt"/>
+        <line num="80" count="75" type="stmt"/>
+        <line num="82" count="75" type="stmt"/>
+        <line num="113" count="3" type="stmt"/>
+      </file>
+      <file name="history.ts" path="/Users/ivan/websites/tdd_react/src/history.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="7" type="stmt"/>
+      </file>
+      <file name="store.ts" path="/Users/ivan/websites/tdd_react/src/store.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="1" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="8" count="61" type="stmt"/>
+        <line num="10" count="61" type="stmt"/>
+        <line num="13" count="7" type="cond" truecount="0" falsecount="1"/>
+        <line num="14" count="61" type="stmt"/>
+        <line num="16" count="61" type="stmt"/>
+        <line num="20" count="61" type="stmt"/>
+        <line num="21" count="61" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.CustomerSearch">
+      <metrics statements="35" coveredstatements="35" conditionals="10" coveredconditionals="10" methods="12" coveredmethods="11"/>
+      <file name="CustomerSearch.tsx" path="/Users/ivan/websites/tdd_react/src/CustomerSearch/CustomerSearch.tsx">
+        <metrics statements="35" coveredstatements="35" conditionals="10" coveredconditionals="10" methods="12" coveredmethods="11"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="30" type="stmt"/>
+        <line num="4" count="30" type="cond" truecount="2" falsecount="0"/>
+        <line num="5" count="10" type="stmt"/>
+        <line num="7" count="30" type="cond" truecount="2" falsecount="0"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="10" count="30" type="cond" truecount="2" falsecount="0"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="13" count="18" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="59" type="stmt"/>
+        <line num="17" count="59" type="stmt"/>
+        <line num="18" count="59" type="stmt"/>
+        <line num="19" count="59" type="stmt"/>
+        <line num="20" count="59" type="stmt"/>
+        <line num="22" count="59" type="stmt"/>
+        <line num="23" count="30" type="stmt"/>
+        <line num="25" count="30" type="cond" truecount="2" falsecount="0"/>
+        <line num="26" count="30" type="stmt"/>
+        <line num="27" count="30" type="stmt"/>
+        <line num="32" count="30" type="stmt"/>
+        <line num="34" count="30" type="stmt"/>
+        <line num="37" count="59" type="stmt"/>
+        <line num="38" count="8" type="stmt"/>
+        <line num="39" count="8" type="stmt"/>
+        <line num="42" count="59" type="stmt"/>
+        <line num="43" count="4" type="stmt"/>
+        <line num="46" count="59" type="stmt"/>
+        <line num="47" count="226" type="stmt"/>
+        <line num="54" count="59" type="stmt"/>
+        <line num="55" count="50" type="stmt"/>
+        <line num="65" count="59" type="stmt"/>
+        <line num="67" count="59" type="stmt"/>
+        <line num="84" count="316" type="stmt"/>
+        <line num="92" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.sagas">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="app.ts" path="/Users/ivan/websites/tdd_react/src/sagas/app.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="14" type="stmt"/>
+      </file>
+    </package>
+    <package name="test">
+      <metrics statements="28" coveredstatements="26" conditionals="12" coveredconditionals="12" methods="18" coveredmethods="14"/>
+      <file name="shallowHelpers.tsx" path="/Users/ivan/websites/tdd_react/test/shallowHelpers.tsx">
+        <metrics statements="28" coveredstatements="26" conditionals="12" coveredconditionals="12" methods="18" coveredmethods="14"/>
+        <line num="3" count="36" type="cond" truecount="2" falsecount="0"/>
+        <line num="5" count="22" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="11" count="6" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="50" type="cond" truecount="2" falsecount="0"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="19" count="48" type="stmt"/>
+        <line num="20" count="48" type="cond" truecount="2" falsecount="0"/>
+        <line num="21" count="26" type="stmt"/>
+        <line num="23" count="22" type="cond" truecount="2" falsecount="0"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="26" count="20" type="cond" truecount="2" falsecount="0"/>
+        <line num="27" count="11" type="stmt"/>
+        <line num="29" count="9" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="33" count="63" type="cond" truecount="2" falsecount="0"/>
+        <line num="34" count="16" type="stmt"/>
+        <line num="36" count="47" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="40" count="26" type="stmt"/>
+        <line num="42" count="26" type="stmt"/>
+        <line num="43" count="10" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="45" count="17" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="47" count="2" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>
